@@ -1,0 +1,56 @@
+<ul>
+  <% if book.errors.any? %>
+    <% book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<%= form_for book do |f| %>
+
+  <div class="field">
+    <%= f.label :title, "名稱" %>
+    <%= f.text_field :title%>
+  </div>
+
+  <div class="field">
+    <%= f.label :description, "描述" %>
+    <%= f.text_area :description%>
+  </div class="field">
+
+  <div class="field">
+    <%= f.label :list_price, "售價" %>
+    <%= f.number_field :list_price%>
+  </div>
+
+  <div class="field">
+    <%= f.label :ssell_price, "特價" %>
+    <%= f.number_field :ssell_price%>
+  </div>
+
+  <div class="field">
+    <%= f.label :page_num, "頁數" %>
+    <%= f.number_field :page_num%>
+  </div>
+
+  <div class="field">
+    <%= f.label :isbn, "ISBN" %>
+    <%= f.text_field :isbn%>
+  </div>
+
+  <div class="field">
+    <%= f.label :isbn13, "ISBN13" %>
+    <%= f.text_field :isbn13%>
+  </div>
+
+  <div class="field">
+    <%= f.label :on_sell, "是否上架" %>
+    <%= f.check_box :on_sell%>
+  </div>
+
+  
+  <%= f.submit %>
+  <%= link_to "取消", root_path%>
+
+<% end %>
