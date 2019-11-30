@@ -1,5 +1,5 @@
 class Admin::BooksController < ApplicationController
-  before_action :find_book, only: [:edit,
+  before_action :find_book, only: [ :edit,
                                     :update,
                                     :show,
                                     :destroy]
@@ -18,7 +18,7 @@ class Admin::BooksController < ApplicationController
   def create
     @book = Book.new(params_book)
     if @book.save
-      redirect_to root_path, notice: "新增成功"
+      redirect_to admin_books_path, notice: "新增成功"
     else
       render :new
     end
@@ -29,7 +29,7 @@ class Admin::BooksController < ApplicationController
 
   def update
     if @book.update(params_book)
-      redirect_to edit_book_path, notice: "編輯成功"
+      redirect_to edit_admin_book_path, notice: "編輯成功"
     else
       render :edit
     end
@@ -40,7 +40,7 @@ class Admin::BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to root_path, notice: "刪除成功"
+    redirect_to admin_books_path, notice: "刪除成功"
   end
 
   private

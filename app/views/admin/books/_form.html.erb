@@ -6,7 +6,7 @@
   <% end %>
 </ul>
 
-<%= form_for book do |f| %>
+<%= form_for ([:admin, book]) do |f| %>
   <div class="field">
     <%= cover_image_tag book %>
     <%= f.label :cover_image, "封面", class: "label"%>
@@ -88,7 +88,7 @@
   
   <div class="buttons">
     <%= f.submit class: 'button is-success'%>
-    <%= link_to "Cancel", root_path, class: 'button is-light'%>
+    <%= link_to "Cancel", admin_root_path, class: 'button is-light'%>
   </div>
 
 <% end %>
