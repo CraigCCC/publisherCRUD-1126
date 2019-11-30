@@ -1,5 +1,6 @@
-
 <h1 class="title">書本列表</h1>
+
+<%= link_to  "新增書本", new_book_path, class: "button is-dark" %>
 
 <div class="columns is-multiline">
   <% @books.each do |book|%>
@@ -13,22 +14,22 @@
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4">
-                <%= book.title %>
-              </p>
+              <p class="title is-4"><%= book.title %></p>
             </div>
           </div>
       
           <div class="content">
-            <%= book.description%>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
           </div>
-          <small>上架日期：<%= book.published%></small>
-          <hr>
-            <div class="content">
-              <%= link_to '放到購物車', '#', class: "button is-light is-small" %>
-            </div>
+          <p>
+            上架日期：<%= book.published%>
+          </p>
         </div>
-          
+          <div class="buttons is-right">
+            <%= link_to '編輯書本', edit_book_path(book), class: "button is-link" %>
+            <%= link_to '刪除書本', book_path(book), method: :delete, data: { confirm: '確定要刪除？' }, class: "button is-danger" %>
+          </div>
       </div>
     </div>
   <% end %>

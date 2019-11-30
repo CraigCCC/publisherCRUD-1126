@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :books
+  resources :books, only: [:index, :show]
   root "books#index"
+
+  namespace :admin do
+    resources :books
+    root "books#index"
+  end
 end
