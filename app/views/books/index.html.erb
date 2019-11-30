@@ -1,11 +1,39 @@
-<h1>書本列表</h1>
 
-<%= link_to  "新增書本", new_book_path %>
+<h1 class="title">書本列表</h1>
 
-<% @books.each do |book|%>
-  <div>
-    <%= book.title %>
-    <%= link_to '編輯書本', edit_book_path(book) %>
-    <%= link_to '刪除書本', book_path(book), method: :delete, data: { confirm: '確定要刪除？' } %>
-  </div>
-<% end %>
+<%= link_to  "新增書本", new_book_path, class: "button is-dark" %>
+
+<div class="columns is-multiline">
+  <% @books.each do |book|%>
+    <div class="column is-3 ">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <%= cover_image_tag book, width: 350, height: 350, index_img: true %>
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4"><%= book.title %></p>
+            </div>
+          </div>
+      
+          <div class="content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+          </div>
+          <p>
+            上架日期：<%= book.published%>
+          </p>
+        </div>
+          <div class="buttons is-right">
+            <%= link_to '編輯書本', edit_book_path(book), class: "button is-link" %>
+            <%= link_to '刪除書本', book_path(book), method: :delete, data: { confirm: '確定要刪除？' }, class: "button is-danger" %>
+          </div>
+      </div>
+    </div>
+  <% end %>
+  
+</div>
+<%= paginate @books %>

@@ -5,7 +5,7 @@ class BooksController < ApplicationController
                                    :destroy]
 
   def index
-    @books = Book.all
+    @books = Book.available.with_attached_cover_image.page(params[:page]).per(4)
   end
 
   def new
@@ -54,7 +54,10 @@ class BooksController < ApplicationController
                                  :page_num,
                                  :isbn,
                                  :isbn13,
-                                 :on_sell)
+                                 :on_sell,
+                                 :cover_image,
+                                 :published,
+                                 :publisher_id)
   end
 
 end
